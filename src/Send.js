@@ -30,6 +30,12 @@ const styles = StyleSheet.create({
     height: 44,
     justifyContent: 'flex-end',
   },
+  sendMsg: {
+    margin: 5,
+    marginRight: 15,
+    height : 35,
+    width: 35
+  },
   text: {
     color: Color.defaultBlue,
     fontWeight: '600',
