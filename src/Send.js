@@ -18,7 +18,7 @@ export default function Send({ text, containerStyle, onSend, children, textStyle
         }}
         accessibilityTraits="button"
       >
-        <View>{children || <Text style={[styles.text, textStyle]}>{label}</Text>}</View>
+        <View>{children || <Image source={require('../../../images/sendMessage.png')} style={styles.sendMsg} />}</View>
       </TouchableOpacity>
     );
   }
