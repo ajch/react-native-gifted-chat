@@ -24,6 +24,7 @@ export default function Time(
   );
 }
 
+
 const containerStyle = {
   marginLeft: 10,
   marginRight: 10,
