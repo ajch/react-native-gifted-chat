@@ -159,7 +159,7 @@ export default class Bubble extends React.PureComponent {
 
   render() {
     return (
-      <View style={[styles[this.props.position].container, this.props.containerStyle[this.props.position]]}>
+      <View style={[styles[this.props.position].container, this.props.containerStyle[this.props.position],{marginBottom:3}]}>
         <View
           style={[
             styles[this.props.position].wrapper,
@@ -180,7 +180,7 @@ export default class Bubble extends React.PureComponent {
               {this.renderMessageText()}
               <View style={[styles[this.props.position].bottom, this.props.bottomContainerStyle[this.props.position]]}>
                 {this.renderUsername()}
-                {this.renderTime()}
+                {/*{this.renderTime()}*/}
                 {this.renderTicks()}
               </View>
             </View>
