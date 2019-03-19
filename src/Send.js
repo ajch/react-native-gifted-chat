@@ -6,7 +6,7 @@ import { StyleSheet, Text, TouchableOpacity, View, ViewPropTypes, Image } from '
 import Color from './Color';
 
 export default function Send({ text, containerStyle, onSend, children, textStyle, label, alwaysShowSend }) {
-  if (alwaysShowSend || text.trim().length > 0) {
+  if (alwaysShowSend || text.trim().length >= 0) {
     return (
       <TouchableOpacity
         testID="send"
@@ -27,14 +27,15 @@ export default function Send({ text, containerStyle, onSend, children, textStyle
 
 const styles = StyleSheet.create({
   container: {
-    height: 44,
+    height: 50,
     justifyContent: 'flex-end',
   },
   sendMsg: {
     margin: 5,
-    marginRight: 15,
-    height : 35,
-    width: 35
+    marginBottom:10,
+    marginRight: 17,
+    height : 30,
+    width: 30
   },
   text: {
     color: Color.defaultBlue,
