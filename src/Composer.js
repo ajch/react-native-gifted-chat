@@ -2,7 +2,7 @@
 
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Platform, StyleSheet, TextInput } from 'react-native';
+import { Platform, StyleSheet, TextInput, Dimensions } from 'react-native';
 
 import { MIN_COMPOSER_HEIGHT, DEFAULT_PLACEHOLDER } from './Constant';
 import Color from './Color';
@@ -36,7 +36,8 @@ export default class Composer extends React.Component {
         accessible
         accessibilityLabel={this.props.placeholder}
         placeholder={this.props.placeholder}
-        placeholderTextColor={this.props.placeholderTextColor}
+        placeholderTextColor={'rgb(112,112,112)'}
+        placeholderStyle={{fontSize:17}}
         multiline={this.props.multiline}
         onChange={(e) => this.onContentSizeChange(e)}
         onContentSizeChange={(e) => this.onContentSizeChange(e)}
@@ -57,15 +58,16 @@ export default class Composer extends React.Component {
 const styles = StyleSheet.create({
   textInput: {
     flex: 1,
-    marginLeft: 10,
-    fontSize: 16,
+    marginLeft: 25,
+    fontSize: 17,
     lineHeight: 16,
+    color:'rgb(39,193,251)',
     marginTop: Platform.select({
       ios: 6,
       android: 0,
     }),
     marginBottom: Platform.select({
-      ios: 5,
+      ios: 8,
       android: 3,
     }),
   },
