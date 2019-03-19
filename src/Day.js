@@ -14,8 +14,39 @@ export default function Day(
   { dateFormat, currentMessage, previousMessage, nextMessage, containerStyle, wrapperStyle, textStyle, inverted },
   context,
 ) {
-  if (!isSameDay(currentMessage, inverted ? previousMessage : nextMessage)) {
-    return (
+   
+    let currentDate = new Date()
+    let currentDateYear = moment(currentDate).format('DD/MM/YYYY')
+    let todaysDate = moment(currentMessage.createdAt).format('DD/MM/YYYY');
+    let lastmessageDate = new Date(currentMessage.createdAt);
+
+    let yesterday = new Date(currentDate);
+    yesterday.setDate(currentDate.getDate() - 1);
+    const date1 = new Date(yesterday);
+    date2 = new Date(todaysDate);
+    difference = (date1.getTime() - date2.getTime()) / 1000;
+    difference /= (60 * 60);
+    var difference1 = Math.abs(Math.round(difference));
+    var duration = moment.duration(moment(currentDate, 'MM/DD/YYYY').diff(moment(lastmessageDate, 'MM/DD/YYYY'))).asHours();
+    var midnight = moment(currentDate).startOf("day");
+    let midNightDate = new Date(midnight);
+    var midNightDuration = moment.duration(moment(currentDate, 'MM/DD/YYYY hh:mm').diff(moment(midNightDate, 'MM/DD/YYYY hh:mm'))).asHours();
+    // console.log('difference', moment(todaysDate).fromNow());
+
+    if(currentDateYear == todaysDate){
+      return (
+      <View style={[styles.container, containerStyle]}>
+        <View style={wrapperStyle}>
+          <Text style={[styles.text, textStyle]}>
+            {moment(currentMessage.createdAt).format('hh:mm')}
+          </Text>
+        </View>
+      </View>
+    );
+    }
+    else{
+      if((duration < 24) && (duration > midNightDuration)){
+        return (
       <View style={[styles.container, containerStyle]}>
         <View style={wrapperStyle}>
           <Text style={[styles.text, textStyle]}>
@@ -27,6 +58,19 @@ export default function Day(
         </View>
       </View>
     );
+   
+      }else{
+        return (
+      <View style={[styles.container, containerStyle]}>
+        <View style={wrapperStyle}>
+          <Text style={[styles.text, textStyle]}>
+            {moment(currentMessage.createdAt).format('DD MMM')}
+          </Text>
+        </View>
+      </View>
+    );
+      }
+
   }
   return null;
 }
